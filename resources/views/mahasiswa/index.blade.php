@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title','List Student')
+@section('title','Daftar Mahasiswa')
 
 @section('container')
 <div class="container">
@@ -12,7 +12,7 @@
     <tr>
         <th scope="col">#</th>
         <th scope="col">Nama</th>
-        <th scope="col">NIP</th>
+        <th scope="col">NRP</th>
         <th scope="col">Email</th>
         <th scope="col">Jurusan</th>
         <th scope="col">Aksi</th>
@@ -23,7 +23,7 @@
     <tr>
         <th scope="col">{{ $loop->iteration }}</th>
         <td>{{ $mhs->nama }}</td>
-        <td>{{ $mhs->nip }}</td>
+        <td>{{ $mhs->nrp }}</td>
         <td>{{ $mhs->email }}</td>
         <td>{{ $mhs->jurusan }}</td>
         <td>
