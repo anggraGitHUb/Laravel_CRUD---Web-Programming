@@ -83,7 +83,7 @@ class StudentsController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('students.edit',compact('student'));
     }
 
     /**
@@ -95,7 +95,23 @@ class StudentsController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+
+        $validated = $request->validate([
+            'nama' => 'required',
+            'nip' => 'required|size:8',
+            'email' => 'required',
+            'jurusan' => 'required'
+        ]);
+
+        Student::where('id', $student->id)
+                ->update([
+                    'nama' => $request->nama,
+                    'nip' => $request->nip,
+                    'email' => $request->email,
+                    'jurusan' => $request->jurusan      
+                ]);
+        
+        return redirect('/students')->with('status','Update Student Succesfully');
     }
 
     /**
@@ -106,6 +122,7 @@ class StudentsController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        Student::destroy($student->id);
+        return redirect('/students')->with('status','Delete Student Succesfully');
     }
 }
